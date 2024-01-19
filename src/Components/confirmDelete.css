@@ -1,0 +1,77 @@
+.delete-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid back;
+  justify-content: left;
+}
+input {
+  border: 1px solid rgba(0, 0, 0, 0.448);
+  border-radius: 10px;
+  padding: 10px;
+}
+.form-text {
+  margin-bottom: 1px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #7f878a;
+}
+h3 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+.form-action {
+  display: flex;
+  gap: 20px;
+  justify-content: right;
+}
+.cancle-button {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 3px;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: rgb(44 164 216);
+  color: rgb(44 164 216);
+  cursor: pointer;
+  width: 123px;
+  padding: 10px;
+  margin-top: 25px;
+  height: 42px;
+}
+.delte-button {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 3px;
+  font-weight: bold;
+  background-color: rgb(255, 0, 0);
+  color: aliceblue;
+  cursor: pointer;
+  border: none;
+  width: 123px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 25px;
+  height: 42px;
+}
+h4 {
+  margin-top: -10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #7f878a;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+.remove-student {
+  text-align: left;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
