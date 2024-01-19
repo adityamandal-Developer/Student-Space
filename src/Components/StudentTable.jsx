@@ -8,7 +8,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Divider, Typography, Box } from "@mui/material";
-import InboxIcon from "@mui/icons-material/Inbox";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ConfirmDelete from "./ConfirmDelete";
@@ -84,7 +83,7 @@ const StudentTable = ({ forms, onclickDelete }) => {
                         ? "error.main"
                         : student.result === "Passed"
                         ? "success.main"
-                        : "inherit", // Default color
+                        : "inherit",
                     borderRadius: "20px",
                     textAlign: "center",
                     color: "white",
@@ -114,7 +113,7 @@ const StudentTable = ({ forms, onclickDelete }) => {
                           ? "info.main"
                           : student.grade === "Excellent"
                           ? "success.main"
-                          : "inherit", // Default color
+                          : "inherit",
                     }}
                   >
                     {student.grade}

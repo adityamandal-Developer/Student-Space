@@ -1,4 +1,4 @@
-import "./Profile.css"; // Import your stylesheet
+import "./Profile.css";
 import profile2 from "../assets/profile.jpg";
 
 const Profile = () => {

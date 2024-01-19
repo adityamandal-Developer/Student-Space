@@ -1,10 +1,9 @@
-/* Default styles */
 .forms {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 650px; /* Set a maximum height for the form */
-  overflow-y: auto; /* Enable vertical scrolling if the content exceeds the height */
+  max-height: 650px;
+  overflow-y: auto;
 }
 
 input {
@@ -35,7 +34,7 @@ h3 {
 .form-action {
   display: flex;
   gap: 20px;
-  justify-content: flex-end; /* Changed to flex-end for better alignment */
+  justify-content: flex-end;
 }
 
 .action-button1,

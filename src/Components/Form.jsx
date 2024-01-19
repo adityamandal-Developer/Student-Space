@@ -15,52 +15,37 @@ function Form({ newFormData, handleModalClose }) {
 
   const handleNameChange = (event) => {
     setStudentName(event.target.value);
-    setNameError(""); // Clear error when the user starts typing again
+    setNameError("");
   };
 
   const handleClassChange = (event) => {
     const value = event.target.value;
     setStudentClass(value);
-
-    // Additional validation: Check if the entered value is a valid integer
     if (!/^\d+$/.test(value)) {
       setClassError("Please enter a valid numerical value for Student Class");
       return;
     }
 
-    // Clear class error when the user starts typing again
     setClassError("");
-
-    // Use useEffect to update studentResult and studentGrade after studentClass has changed
-    // useEffect(() => {
-    //   // Update studentResult and studentGrade states based on the calculated result
-    //   const result = calculateStudentResult(studentScore);
-    //   setStudentResult(result);
-    //   const grade = calculateGrade(studentScore);
-    //   setStudentGrade(grade);
-    // }, [studentScore, value]);
   };
 
   const handleScoreChange = (event) => {
     const score = event.target.value;
     setStudentScore(score);
 
-    // Update studentResult and studentGrade states based on the calculated result
     const result = calculateStudentResult(score);
     setStudentResult(result);
     const grade = calculateGrade(score);
     setStudentGrade(grade);
-    setScoreError(""); // Clear error when the user starts typing again
+    setScoreError("");
   };
 
   const checkError = () => {
-    // Check if studentName is empty
     if (studentName.trim() === "") {
       setNameError("Student Name cannot be empty");
       return true;
     }
 
-    // Check if studentClass is not in the range of 1-12
     const classValue = parseInt(studentClass, 10);
     if (isNaN(classValue) || classValue < 1 || classValue > 12) {
       setClassError(
@@ -69,7 +54,6 @@ function Form({ newFormData, handleModalClose }) {
       return true;
     }
 
-    // Check if studentScore is not in the range of 0-100
     const scoreValue = parseInt(studentScore, 10);
     if (isNaN(scoreValue) || scoreValue < 0 || scoreValue > 100) {
       setScoreError(
@@ -78,17 +62,14 @@ function Form({ newFormData, handleModalClose }) {
       return true;
     }
 
-    // If all conditions pass, return false (no error)
     return false;
   };
 
   const handleAddButtonClicked = () => {
-    // Check for errors before proceeding
     if (checkError()) {
-      return; // Don't proceed if there is an error
+      return;
     }
 
-    // Pass form data to the newFormData function
     newFormData(
       studentName,
       studentClass,
@@ -97,7 +78,6 @@ function Form({ newFormData, handleModalClose }) {
       studentGrade
     );
 
-    // Reset form fields
     setStudentName("");
     setStudentClass("");
     setStudentScore("");
@@ -202,7 +182,7 @@ function Form({ newFormData, handleModalClose }) {
               ? "info.main"
               : studentGrade === "Excellent"
               ? "success.main"
-              : "inherit", // Default color
+              : "inherit",
         }}
       >
         {studentGrade}

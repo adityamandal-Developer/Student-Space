@@ -59,10 +59,6 @@ function DrawerComponent() {
           </Box>
         </List>
       </StyledDrawer>
-      {/* <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-      /> */}
     </>
   );
 }
