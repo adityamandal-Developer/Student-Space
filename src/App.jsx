@@ -4,7 +4,7 @@ import StudentTable from "./Components/StudentTable";
 import DrawerComponent from "./Components/DrawerComponent";
 import Form from "./Components/Form";
 import { Typography, Box } from "@mui/material";
-import AddStudentMessage from "./Components/addStudentMessage";
+import AddStudentMessage from "./Components/AddStudentMessage";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
