@@ -25,7 +25,6 @@ function Form({ newFormData, handleModalClose }) {
       setClassError("Please enter a valid numerical value for Student Class");
       return;
     }
-
     setClassError("");
   };
 
@@ -34,10 +33,14 @@ function Form({ newFormData, handleModalClose }) {
     setStudentScore(score);
 
     const result = calculateStudentResult(score);
-    setStudentResult(result);
     const grade = calculateGrade(score);
-    setStudentGrade(grade);
+    if (!/^\d+$/.test(score)) {
+      setScoreError("Please enter a valid numerical value for Student Class");
+      return;
+    }
     setScoreError("");
+    setStudentResult(result);
+    setStudentGrade(grade);
   };
 
   const checkError = () => {
@@ -47,7 +50,7 @@ function Form({ newFormData, handleModalClose }) {
     }
 
     const classValue = parseInt(studentClass, 10);
-    if (isNaN(classValue) || classValue < 1 || classValue > 12) {
+    if (!/^\d+$/.test(classValue) || classValue < 1 || classValue > 12) {
       setClassError(
         "Please input valid values between 1 & 12 for Student Class"
       );
@@ -55,14 +58,12 @@ function Form({ newFormData, handleModalClose }) {
     }
 
     const scoreValue = parseInt(studentScore, 10);
-    if (isNaN(scoreValue) || scoreValue < 0 || scoreValue > 100) {
+    if (!/^\d+$/.test(scoreValue) || scoreValue < 0 || scoreValue > 100) {
       setScoreError(
-        "Please input valid values between 0 & 100 for Student Score"
+        "Please input a valid number between 0 and 100 for Student Score"
       );
       return true;
     }
-
-    return false;
   };
 
   const handleAddButtonClicked = () => {
@@ -113,7 +114,7 @@ function Form({ newFormData, handleModalClose }) {
 
       <h1 className="form-text">STUDENT CLASS*</h1>
       <input
-        type="text"
+        type="number"
         placeholder="Enter Student Class"
         value={studentClass}
         onChange={handleClassChange}
@@ -133,7 +134,7 @@ function Form({ newFormData, handleModalClose }) {
 
       <h1 className="form-text">STUDENT SCORE*</h1>
       <input
-        type="text"
+        type="number"
         placeholder="Enter Student Score"
         value={studentScore}
         onChange={handleScoreChange}
@@ -212,7 +213,7 @@ function Form({ newFormData, handleModalClose }) {
   function calculateStudentResult(studentScore) {
     if (studentScore >= 0 && studentScore <= 30) {
       return "Failed";
-    } else if (studentScore >= 31 && studentScore <= 75) {
+    } else if (studentScore >= 31 && studentScore <= 100) {
       return "Passed";
     } else if (studentScore >= 76 && studentScore <= 100) {
       return "Passed";
