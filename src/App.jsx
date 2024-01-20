@@ -63,11 +63,10 @@ function App() {
         <StudentTable forms={forms} onclickDelete={handleDeleteForm} />
         <Box
           sx={{
-            position: "fixed",
             bottom: 0,
           }}
         >
-          <Typography sx={{ margin: "8px" }}>
+          <Typography sx={{ margin: "0px", padding: "0px", zIndex: 2 }}>
             showing {forms.length} of {forms.length} entries
           </Typography>
         </Box>
