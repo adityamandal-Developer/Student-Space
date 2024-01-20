@@ -81,3 +81,10 @@
 .edit-icon {
   cursor: pointer;
 }
+@media (max-width: 780px) {
+  .modal-overlay .modal {
+    width: 100%;
+    margin-left: 50%;
+    border: 1px solid black;
+  }
+}
