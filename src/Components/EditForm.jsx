@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Divider, Typography, Box } from "@mui/material";
-import "./EditForm.css";
+import "./Editform.css";
 
 const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
   const [editedStudent, setEditedStudent] = useState({
