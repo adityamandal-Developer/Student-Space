@@ -12,8 +12,15 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ConfirmDelete from "./ConfirmDelete";
 import { useState } from "react";
+import EditForm from "./EditForm";
 
-const StudentTable = ({ forms, onclickDelete }) => {
+const StudentTable = ({
+  forms,
+  onclickDelete,
+  newFormData,
+  handleModalClose,
+  onClickEdit,
+}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -28,13 +35,18 @@ const StudentTable = ({ forms, onclickDelete }) => {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     "&:last-child td, &:last-child th": {
       border: 0,
+    },
+    "&:hover": {
+      backgroundColor: "#F1F4F8",
+      transition: "background-color 0.3s ease-in-out", // Add transition
     },
   }));
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const [studentToDelete, setStudentToDelete] = useState(null);
+  const [showEditForm, setshowEditForm] = useState(false);
+  const [studentToEdit, setStudentToEdit] = useState(null);
 
   const handleDeleteButtonClicked = (student) => {
     setStudentToDelete(student);
@@ -44,6 +56,15 @@ const StudentTable = ({ forms, onclickDelete }) => {
   const handleDeleteButtonClickedClose = () => {
     setStudentToDelete(null);
     setShowDeleteForm(false);
+  };
+
+  const handleEditButtonClicked = (student) => {
+    setStudentToEdit(student);
+    setshowEditForm(true);
+  };
+  const handleEditButtonClickedClose = () => {
+    setStudentToEdit(null);
+    setshowEditForm(false);
   };
 
   const handleDeleteConfirmation = () => {
@@ -139,9 +160,25 @@ const StudentTable = ({ forms, onclickDelete }) => {
                       </div>
                     </div>
                   )}
-                  <div className="edit-icon">
+
+                  <div
+                    className="edit-icon"
+                    onClick={() => handleEditButtonClicked(student)}
+                  >
                     <EditOutlinedIcon />
                   </div>
+                  {showEditForm && (
+                    <div className="modal-overlay">
+                      <div className="modal">
+                        <EditForm
+                          onClickEdit={onClickEdit}
+                          newFormData={newFormData}
+                          student={studentToEdit}
+                          handleModalClose={handleEditButtonClickedClose}
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </StyledTableCell>
             </StyledTableRow>

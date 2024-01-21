@@ -40,6 +40,14 @@ function App() {
     const newforms = forms.filter((form) => form !== formName);
     setNewForms(newforms);
   };
+
+  const handleUpdateForm = (formName, updatedData) => {
+    const updatedForms = forms.map((form) =>
+      form.name === formName ? { ...form, ...updatedData } : form
+    );
+    setNewForms(updatedForms);
+  };
+
   return (
     <div className="flex-container">
       <div className="drawer">
@@ -60,7 +68,12 @@ function App() {
           </button>
         </div>
 
-        <StudentTable forms={forms} onclickDelete={handleDeleteForm} />
+        <StudentTable
+          forms={forms}
+          onclickDelete={handleDeleteForm}
+          onClickEdit={handleUpdateForm}
+          handleModalClose={handleModalClose}
+        />
         <Box
           sx={{
             bottom: 0,
