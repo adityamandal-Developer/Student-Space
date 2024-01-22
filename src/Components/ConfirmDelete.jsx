@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, Typography, Box } from "@mui/material";
 import "./confirmDelete.css";
-function ConfirmDelete({ student, onclickDelete, setShowDeleteForm }) {
+function ConfirmDelete({ student, onclickDelete, setShowDeleteForm, index }) {
   return (
     <div className="delete-confirm">
       <Typography variant="h6" gutterBottom className="remove-student">
@@ -14,7 +14,7 @@ function ConfirmDelete({ student, onclickDelete, setShowDeleteForm }) {
       <h1 className="form-text">STUDENT NAME</h1>
       <h3>{student.name}</h3>
 
-      <h1 className="form-text">STUDENT CLASS*</h1>
+      <h1 className="form-text">STUDENT CLASS</h1>
       <h3>{student.class}</h3>
       <Divider />
       <div className="form-action">
@@ -28,7 +28,7 @@ function ConfirmDelete({ student, onclickDelete, setShowDeleteForm }) {
         <button
           type="button"
           className="delte-button"
-          onClick={() => onclickDelete(student)}
+          onClick={() => onclickDelete(student.id)}
         >
           REMOVE
         </button>

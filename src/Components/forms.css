@@ -82,6 +82,12 @@ h4 {
 .error {
   color: red;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media (max-height: 650px) {
   .forms {
     max-height: 400px;

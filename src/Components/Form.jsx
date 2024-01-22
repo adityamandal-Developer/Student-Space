@@ -4,6 +4,7 @@ import { Divider, Typography, Box } from "@mui/material";
 import { useEffect } from "react";
 
 function Form({ newFormData, handleModalClose }) {
+  const [studentId, setStudentId] = useState();
   const [studentName, setStudentName] = useState("");
   const [studentClass, setStudentClass] = useState("");
   const [studentScore, setStudentScore] = useState("");
@@ -72,13 +73,14 @@ function Form({ newFormData, handleModalClose }) {
     }
 
     newFormData(
+      studentId,
       studentName,
       studentClass,
       studentScore,
       studentResult,
       studentGrade
     );
-
+    setStudentId();
     setStudentName("");
     setStudentClass("");
     setStudentScore("");
@@ -160,7 +162,7 @@ function Form({ newFormData, handleModalClose }) {
               ? "error.main"
               : studentResult === "Passed"
               ? "success.main"
-              : "inherit", // Default color
+              : "inherit",
           borderRadius: "20px",
           textAlign: "center",
           color: "white",

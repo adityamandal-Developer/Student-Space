@@ -2,8 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Divider, Typography, Box } from "@mui/material";
 import "./Editform.css";
 
-const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
+const EditForm = ({
+  onClickEdit,
+  newFormData,
+  student,
+  handleModalClose,
+  index,
+}) => {
   const [editedStudent, setEditedStudent] = useState({
+    id: student.id,
     name: student.name,
     class: student.class,
     score: student.score,
@@ -19,14 +26,12 @@ const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Update the relevant state variable based on the input name
     if (name === "score") {
       setEditedStudent((prevStudent) => ({
         ...prevStudent,
         [name]: value,
       }));
 
-      // Calculate and update result and grade in real-time
       const updatedResult = calculateStudentResult(value);
       const updatedGrade = calculateGrade(value);
       setStudentResult(updatedResult);
@@ -76,7 +81,9 @@ const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
     if (checkError()) {
       return;
     }
-    onClickEdit(student.name, editedStudent); //i have taken student name for identification
+
+    onClickEdit(student.id, editedStudent);
+
     handleModalClose();
   };
 
@@ -87,7 +94,7 @@ const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
       </Typography>
       <Divider />
 
-      <h1 className="form-text">STUDENT NAME*</h1>
+      <h1 className="form-text">STUDENT NAME</h1>
       <input
         autoComplete="off"
         type="text"
@@ -108,7 +115,7 @@ const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
         <div className="default-message" style={{ margin: "0px" }}></div>
       )}
 
-      <h1 className="form-text">STUDENT CLASS*</h1>
+      <h1 className="form-text">STUDENT CLASS</h1>
       <input
         type="number"
         placeholder="Enter Student Class"
@@ -134,7 +141,7 @@ const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
         </div>
       )}
 
-      <h1 className="form-text">STUDENT SCORE*</h1>
+      <h1 className="form-text">STUDENT SCORE</h1>
       <input
         type="number"
         placeholder="Enter Student Score"
@@ -167,7 +174,7 @@ const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
               ? "error.main"
               : studentResult === "Passed"
               ? "success.main"
-              : "inherit", // Default color
+              : "inherit",
           borderRadius: "20px",
           textAlign: "center",
           color: "white",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import StudentTable from "./Components/StudentTable";
 import DrawerComponent from "./Components/DrawerComponent";
@@ -8,6 +8,15 @@ import AddStudentMessage from "./Components/AddStudentMessage";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
+  const [forms, setNewForms] = useState([]);
+
+  useEffect(() => {
+    const storedForms = JSON.parse(localStorage.getItem("forms")) || [];
+    setNewForms(storedForms);
+  }, []);
+  const updateLocalStorage = (newForms) => {
+    localStorage.setItem("forms", JSON.stringify(newForms));
+  };
 
   const handleAddButtonClick = () => {
     setShowForm(true);
@@ -16,17 +25,19 @@ function App() {
   const handleModalClose = () => {
     setShowForm(false);
   };
-  const [forms, setNewForms] = useState([]);
+
   const handleNewForms = (
+    studentID,
     studentName,
     studentClass,
     studentScore,
     studentResult,
     studentGrade
   ) => {
-    const newforms = [
+    const newForms = [
       ...forms,
       {
+        id: studentID,
         name: studentName,
         class: studentClass,
         score: studentScore,
@@ -34,18 +45,22 @@ function App() {
         grade: studentGrade,
       },
     ];
-    setNewForms(newforms);
-  };
-  const handleDeleteForm = (formName) => {
-    const newforms = forms.filter((form) => form !== formName);
-    setNewForms(newforms);
+    setNewForms(newForms);
+    updateLocalStorage(newForms);
   };
 
-  const handleUpdateForm = (formName, updatedData) => {
+  const handleDeleteForm = (formId) => {
+    const newForms = forms.filter((form) => form !== formId);
+    setNewForms(newForms);
+    updateLocalStorage(newForms);
+  };
+
+  const handleUpdateForm = (formId, updatedData) => {
     const updatedForms = forms.map((form) =>
-      form.name === formName ? { ...form, ...updatedData } : form
+      form.id === formId ? { ...form, ...updatedData } : form
     );
     setNewForms(updatedForms);
+    updateLocalStorage(updatedForms);
   };
 
   return (

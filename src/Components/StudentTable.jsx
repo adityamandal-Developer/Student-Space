@@ -40,7 +40,7 @@ const StudentTable = ({
     },
     "&:hover": {
       backgroundColor: "#F1F4F8",
-      transition: "background-color 0.3s ease-in-out", // Add transition
+      transition: "background-color 0.3s ease-in-out",
     },
   }));
   const [showDeleteForm, setShowDeleteForm] = useState(false);
@@ -91,7 +91,9 @@ const StudentTable = ({
         <TableBody>
           {forms.map((student, index) => (
             <StyledTableRow key={index + 1} className="table-row">
-              <StyledTableCell align="left">{index + 1}</StyledTableCell>
+              <StyledTableCell align="left">
+                {(student.id = index + 1)}
+              </StyledTableCell>
               <StyledTableCell component="th" scope="row">
                 {student.name}
               </StyledTableCell>
