@@ -76,7 +76,7 @@ const EditForm = ({ onClickEdit, newFormData, student, handleModalClose }) => {
     if (checkError()) {
       return;
     }
-    onClickEdit(student.name, editedStudent); // Assuming you pass the student name for identification
+    onClickEdit(student.name, editedStudent); //i have taken student name for identification
     handleModalClose();
   };
 
