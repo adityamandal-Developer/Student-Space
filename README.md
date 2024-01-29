@@ -1,5 +1,5 @@
 
-# Wit By Bit - Assignment
+# Student Space
 I have used pnpm because it is lightweight and faster
 Install pnpm in your root directory by `npm install -g pnpm`
 go to the project folder by `cd WitByBit-Assignment` then run `pnpm i` or `pnpm add` and then `pnpm run dev`
